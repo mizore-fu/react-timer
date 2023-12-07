@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: react-timer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/usr/src/app
+      - node_modules_volume:/usr/src/app/node_modules
+    command: sh -c "cd app && npm install react-scripts"
+    ports:
+      - 3000:3000
+volumes:
+  node_modules_volume:
