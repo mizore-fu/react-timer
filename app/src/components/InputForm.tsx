@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 
 type Props = {
-  startCounting: (inputMinutes: number, inputSeconds: number) => void;
+  startCounting: (inputTime: number) => void;
 };
 
 export const InputForm: FC<Props> = ({ startCounting }) => {
@@ -10,7 +10,8 @@ export const InputForm: FC<Props> = ({ startCounting }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    startCounting(inputMinutes, inputSeconds);
+    const inputTime = inputMinutes * 60 + inputSeconds;
+    startCounting(inputTime);
   };
 
   return (
