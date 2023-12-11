@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputForm } from "./components/InputForm";
 import { StopButtons } from "./components/StopButtons";
 
@@ -12,6 +12,15 @@ function App() {
     setRemainingTime(inputTime);
     setCounting(true);
   };
+
+  useEffect(() => {
+    if (isCounting) {
+      const id = setInterval(() => {
+        setRemainingTime((prev) => prev - 1);
+        clearInterval(id);
+      }, 1000);
+    }
+  }, [remainingTime]);
 
   return (
     <div className="App">
