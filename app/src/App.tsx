@@ -20,7 +20,9 @@ function App() {
       ) : (
         <InputForm startCounting={startCounting} />
       )}
-      <p>残り時間 00:00</p>
+      <p>
+        残り時間 {Math.floor(remainingTime / 60)}:{remainingTime % 60}
+      </p>
     </div>
   );
 }
