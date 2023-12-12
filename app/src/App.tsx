@@ -14,11 +14,15 @@ function App() {
   };
 
   useEffect(() => {
+    if (remainingTime === 0) {
+      return;
+    }
     if (isCounting) {
       const id = setInterval(() => {
         setRemainingTime((prev) => prev - 1);
         clearInterval(id);
       }, 1000);
+      return () => clearInterval(id);
     }
   }, [remainingTime]);
 
