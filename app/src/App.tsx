@@ -13,6 +13,11 @@ function App() {
     setCounting(true);
   };
 
+  const resetCounting = () => {
+    setCounting(false);
+    setRemainingTime(0);
+  };
+
   useEffect(() => {
     if (remainingTime === 0) {
       return;
@@ -24,14 +29,20 @@ function App() {
       }, 1000);
       return () => clearInterval(id);
     }
-  }, [remainingTime]);
+  }, [remainingTime, isCounting]);
 
   return (
     <div className="App">
       {isCounting ? (
-        <StopButtons measurementTime={measurementTime} />
+        <StopButtons
+          measurementTime={measurementTime}
+          resetCounting={resetCounting}
+        />
       ) : (
-        <InputForm startCounting={startCounting} />
+        <InputForm
+          measurementTime={measurementTime}
+          startCounting={startCounting}
+        />
       )}
       <p>
         残り時間 {Math.floor(remainingTime / 60)}:{remainingTime % 60}
