@@ -2,17 +2,22 @@ import React, { FC } from "react";
 import { Input } from "./Input";
 
 type Props = {
-  defaultTime: number;
   disabled: boolean;
+  setInputMinutes: React.Dispatch<React.SetStateAction<number>>;
+  setInputSeconds: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const InputField: FC<Props> = ({ defaultTime, disabled }) => {
+export const InputField: FC<Props> = ({
+  disabled,
+  setInputMinutes,
+  setInputSeconds,
+}) => {
   return (
     <div>
       計測時間
-      <Input defaultValue={Math.floor(defaultTime / 60)} disabled={disabled} />
+      <Input disabled={disabled} setTime={setInputMinutes} />
       分
-      <Input defaultValue={defaultTime % 60} disabled={disabled} />秒
+      <Input disabled={disabled} setTime={setInputSeconds} />秒
     </div>
   );
 };
