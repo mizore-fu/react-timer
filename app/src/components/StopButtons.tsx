@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import { ResumeButton } from "./ResumeButton";
-import { PauseButton } from "./PauseButton";
+import { Button } from "./Button";
 
 type Props = {
   isPausing: boolean;
@@ -36,11 +35,11 @@ export const StopButtons: FC<Props> = ({
       分
       <input type="number" defaultValue={measurementTime % 60} disabled />秒
       {isPausing ? (
-        <ResumeButton handleResume={handleResume} />
+        <Button text="再開" onClick={handleResume} />
       ) : (
-        <PauseButton handlePause={handlePause} />
+        <Button text="一時停止" onClick={handlePause} />
       )}
-      <button onClick={resetCounting}>リセット</button>
+      <Button text="リセット" onClick={resetCounting} />
     </div>
   );
 };

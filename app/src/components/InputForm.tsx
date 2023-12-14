@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { Button } from "./Button";
 
 type Props = {
   measurementTime: number;
@@ -33,7 +34,8 @@ export const InputForm: FC<Props> = ({ measurementTime, startCounting }) => {
         value={inputSeconds}
         onChange={(e) => setInputSeconds(Number(e.target.value))}
       />
-      秒<button>スタート</button>
+      秒
+      <Button text="スタート" />
     </form>
   );
 };
