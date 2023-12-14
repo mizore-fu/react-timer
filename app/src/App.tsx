@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { InputForm } from "./components/InputForm";
-import { StopButtons } from "./components/StopButtons";
 import { TIMER_STATUS_MAP } from "./constants";
+import { InputField } from "./components/InputField";
+import { Button } from "./components/Button";
 
 function App() {
   const [timerStatus, setTimerStatus] = useState<number>(
@@ -47,41 +47,40 @@ function App() {
     }
   }, [remainingTime, isCounting]);
 
-  const timerController = () => {
+  const timerController = (timerStatus: number) => {
     switch (timerStatus) {
       case TIMER_STATUS_MAP["setting"]:
         return (
-          <InputForm
-            measurementTime={measurementTime}
-            startCounting={startCounting}
-          />
+          <div>
+            <InputField defaultTime={measurementTime} disabled={false} />
+            <Button
+              text="スタート"
+              onClick={() => setTimerStatus(TIMER_STATUS_MAP["counting"])}
+            />
+          </div>
         );
       case TIMER_STATUS_MAP["counting"]:
         return (
-          <StopButtons
-            isPausing={false}
-            measurementTime={measurementTime}
-            pauseCounting={pauseCounting}
-            resumeCounting={resumeCounting}
-            resetCounting={resetCounting}
-          />
+          <div>
+            <InputField defaultTime={measurementTime} disabled={true} />
+            <Button text="一時停止" onClick={pauseCounting} />
+            <Button text="リセット" onClick={resetCounting} />
+          </div>
         );
       case TIMER_STATUS_MAP["pausing"]:
         return (
-          <StopButtons
-            isPausing={true}
-            measurementTime={measurementTime}
-            pauseCounting={pauseCounting}
-            resumeCounting={resumeCounting}
-            resetCounting={resetCounting}
-          />
+          <div>
+            <InputField defaultTime={measurementTime} disabled={true} />
+            <Button text="再開" onClick={resumeCounting} />
+            <Button text="リセット" onClick={resetCounting} />
+          </div>
         );
     }
   };
 
   return (
     <div className="App">
-      {timerController()}
+      {timerController(timerStatus)}
       <p>
         残り時間 {Math.floor(remainingTime / 60)}:{remainingTime % 60}
       </p>
