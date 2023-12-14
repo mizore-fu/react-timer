@@ -1,22 +1,25 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { ResumeButton } from "./ResumeButton";
 import { PauseButton } from "./PauseButton";
 
 type Props = {
+  isPausing: boolean;
   measurementTime: number;
+  pauseCounting: () => void;
   resetCounting: () => void;
 };
 
-export const StopButtons: FC<Props> = ({ measurementTime, resetCounting }) => {
-  const [isPausing, setPausing] = useState<boolean>(false);
-
+export const StopButtons: FC<Props> = ({
+  isPausing,
+  measurementTime,
+  pauseCounting,
+  resetCounting,
+}) => {
   const handlePause = () => {
-    setPausing(true);
+    pauseCounting();
   };
 
-  const handleResume = () => {
-    setPausing(false);
-  };
+  const handleResume = () => {};
 
   return (
     <div>
