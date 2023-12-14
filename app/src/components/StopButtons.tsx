@@ -16,14 +16,6 @@ export const StopButtons: FC<Props> = ({
   resumeCounting,
   resetCounting,
 }) => {
-  const handlePause = () => {
-    pauseCounting();
-  };
-
-  const handleResume = () => {
-    resumeCounting();
-  };
-
   return (
     <div>
       計測時間
@@ -35,9 +27,9 @@ export const StopButtons: FC<Props> = ({
       分
       <input type="number" defaultValue={measurementTime % 60} disabled />秒
       {isPausing ? (
-        <Button text="再開" onClick={handleResume} />
+        <Button text="再開" onClick={resumeCounting} />
       ) : (
-        <Button text="一時停止" onClick={handlePause} />
+        <Button text="一時停止" onClick={pauseCounting} />
       )}
       <Button text="リセット" onClick={resetCounting} />
     </div>
