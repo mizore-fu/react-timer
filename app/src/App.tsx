@@ -23,6 +23,11 @@ function App() {
     setTimerStatus(TIMER_STATUS_MAP["pausing"]);
   };
 
+  const resumeCounting = () => {
+    setCounting(true);
+    setTimerStatus(TIMER_STATUS_MAP["counting"]);
+  };
+
   const resetCounting = () => {
     setRemainingTime(0);
     setCounting(false);
@@ -57,6 +62,7 @@ function App() {
             isPausing={false}
             measurementTime={measurementTime}
             pauseCounting={pauseCounting}
+            resumeCounting={resumeCounting}
             resetCounting={resetCounting}
           />
         );
@@ -66,6 +72,7 @@ function App() {
             isPausing={true}
             measurementTime={measurementTime}
             pauseCounting={pauseCounting}
+            resumeCounting={resumeCounting}
             resetCounting={resetCounting}
           />
         );

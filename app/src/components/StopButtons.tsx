@@ -6,6 +6,7 @@ type Props = {
   isPausing: boolean;
   measurementTime: number;
   pauseCounting: () => void;
+  resumeCounting: () => void;
   resetCounting: () => void;
 };
 
@@ -13,13 +14,16 @@ export const StopButtons: FC<Props> = ({
   isPausing,
   measurementTime,
   pauseCounting,
+  resumeCounting,
   resetCounting,
 }) => {
   const handlePause = () => {
     pauseCounting();
   };
 
-  const handleResume = () => {};
+  const handleResume = () => {
+    resumeCounting();
+  };
 
   return (
     <div>
