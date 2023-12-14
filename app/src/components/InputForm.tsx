@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { Button } from "./Button";
+import { InputField } from "./InputField";
 
 type Props = {
   measurementTime: number;
@@ -16,25 +17,15 @@ export const InputForm: FC<Props> = ({ measurementTime, startCounting }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const inputTime = inputMinutes * 60 + inputSeconds;
+    const inputTime =
+      Number(e.currentTarget[0].getAttribute("value")) * 60 +
+      Number(e.currentTarget[1].getAttribute("value"));
     startCounting(inputTime);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      計測時間
-      <input
-        type="number"
-        value={inputMinutes}
-        onChange={(e) => setInputMinutes(Number(e.target.value))}
-      />
-      分
-      <input
-        type="number"
-        value={inputSeconds}
-        onChange={(e) => setInputSeconds(Number(e.target.value))}
-      />
-      秒
+      <InputField defaultTime={measurementTime} disabled={false} />
       <Button text="スタート" />
     </form>
   );

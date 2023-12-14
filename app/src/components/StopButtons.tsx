@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Button } from "./Button";
+import { InputField } from "./InputField";
 
 type Props = {
   isPausing: boolean;
@@ -18,14 +19,7 @@ export const StopButtons: FC<Props> = ({
 }) => {
   return (
     <div>
-      計測時間
-      <input
-        type="number"
-        defaultValue={Math.floor(measurementTime / 60)}
-        disabled
-      />
-      分
-      <input type="number" defaultValue={measurementTime % 60} disabled />秒
+      <InputField defaultTime={measurementTime} disabled={true} />
       {isPausing ? (
         <Button text="再開" onClick={resumeCounting} />
       ) : (
