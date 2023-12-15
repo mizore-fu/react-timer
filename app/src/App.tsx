@@ -12,10 +12,6 @@ function App() {
   const [inputSeconds, setInputSeconds] = useState<number>(0);
   const [remainingTime, setRemainingTime] = useState<number>(0);
 
-  const calcInputTime = () => {
-    return inputMinutes * 60 + inputSeconds;
-  };
-
   useEffect(() => {
     if (remainingTime === 0) {
       return;
@@ -38,10 +34,10 @@ function App() {
       />
       <ControlButtons
         timerStatus={timerStatus}
+        inputTime={inputMinutes * 60 + inputSeconds}
         setTimerStatus={setTimerStatus}
         setCounting={setCounting}
         setRemainingTime={setRemainingTime}
-        calcInputTime={calcInputTime}
       />
       <p>
         残り時間 {Math.floor(remainingTime / 60)}:{remainingTime % 60}

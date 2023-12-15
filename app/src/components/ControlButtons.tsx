@@ -4,21 +4,20 @@ import { Button } from "./Button";
 
 type Props = {
   timerStatus: number;
+  inputTime: number;
   setTimerStatus: React.Dispatch<React.SetStateAction<number>>;
   setCounting: React.Dispatch<React.SetStateAction<boolean>>;
   setRemainingTime: React.Dispatch<React.SetStateAction<number>>;
-  calcInputTime: () => number;
 };
 
 export const ControlButtons: FC<Props> = ({
   timerStatus,
+  inputTime,
   setTimerStatus,
   setCounting,
   setRemainingTime,
-  calcInputTime,
 }) => {
   const startCounting = () => {
-    const inputTime = calcInputTime();
     setRemainingTime(inputTime);
     setCounting(true);
     setTimerStatus(TIMER_STATUS_MAP["counting"]);
