@@ -25,6 +25,17 @@ function App() {
     }
   }, [remainingTime, isCounting]);
 
+  const convertToTwoDisits = (num: number) => {
+    if (num > 9) return String(num);
+    return `0${String(num)}`;
+  };
+
+  const transformIntoDisplayedTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${convertToTwoDisits(minutes)}:${convertToTwoDisits(seconds)}`;
+  };
+
   return (
     <div className="App">
       <InputField
@@ -39,9 +50,7 @@ function App() {
         setCounting={setCounting}
         setRemainingTime={setRemainingTime}
       />
-      <p>
-        残り時間 {Math.floor(remainingTime / 60)}:{remainingTime % 60}
-      </p>
+      <p>残り時間 {transformIntoDisplayedTime(remainingTime)}</p>
     </div>
   );
 }
