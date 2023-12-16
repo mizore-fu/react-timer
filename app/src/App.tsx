@@ -50,7 +50,9 @@ function App() {
         setCounting={setCounting}
         setRemainingTime={setRemainingTime}
       />
-      <p>残り時間 {transformIntoDisplayedTime(remainingTime)}</p>
+      <p className="app__content">
+        残り時間 {transformIntoDisplayedTime(remainingTime)}
+      </p>
     </div>
   );
 }

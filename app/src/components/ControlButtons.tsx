@@ -42,22 +42,42 @@ export const ControlButtons: FC<Props> = ({
   switch (timerStatus) {
     case TIMER_STATUS_MAP["counting"]:
       return (
-        <div>
-          <Button text="一時停止" onClick={pauseCounting} />
-          <Button text="リセット" onClick={resetCounting} />
+        <div className="buttons">
+          <Button
+            className="button--level2"
+            text="一時停止"
+            onClick={pauseCounting}
+          />
+          <Button
+            className="button--level2"
+            text="リセット"
+            onClick={resetCounting}
+          />
         </div>
       );
     case TIMER_STATUS_MAP["pausing"]:
       return (
-        <div>
-          <Button text="再開" onClick={resumeCounting} />
-          <Button text="リセット" onClick={resetCounting} />
+        <div className="buttons">
+          <Button
+            className="button--level1"
+            text="再開"
+            onClick={resumeCounting}
+          />
+          <Button
+            className="button--level2"
+            text="リセット"
+            onClick={resetCounting}
+          />
         </div>
       );
     default:
       return (
-        <div>
-          <Button text="スタート" onClick={startCounting} />
+        <div className="buttons">
+          <Button
+            className="button--level1"
+            text="スタート"
+            onClick={startCounting}
+          />
         </div>
       );
   }

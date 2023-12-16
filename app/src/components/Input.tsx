@@ -15,6 +15,7 @@ export const Input: FC<Props> = ({ disabled, setTime }) => {
 
   return (
     <input
+      className="input"
       type="number"
       value={value}
       min={0}
